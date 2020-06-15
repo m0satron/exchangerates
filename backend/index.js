@@ -1,19 +1,21 @@
 const express = require("express");
 const cors = require("cors");
-const routes = require("./src/routes/router");
+const router = require("./src/routes/router");
 require("dotenv").config();
+
+const startPage = require("./src/routes/startPage")
+const login = require("./src/routes/login")
+const routes = require("./src/routes/router")
+
+const JWT = require("jsonwebtoken");
 
 const app = express();
 const PORT = process.env.PORT || 3001;
 app.use(express.json());
+app.use(cors());
 
-app.use((req, res) => {
-  const route = `${req.method} ${req.url}`;
-  const handler = routes[route];
+app.get("/", startPage)
+app.use("/login", login )
+app.use("/home", router)
 
-  if (handler) handler(req, res);
-  if (!handler) res.end()
-
-
-});
 app.listen(PORT, () => console.log(`server running on port: ${PORT}...`));
