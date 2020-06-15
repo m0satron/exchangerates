@@ -27,7 +27,7 @@
 
 * Repeated searches for the same country could be cached, I guess. 
 
-* The api key provided did was did not include changing of base value, I was not sure if it was intended or not, so I decided to roll with it and make my own currency converter, however, I think the rounding function has some issues, obviously, ideally it would be better to get the base and amount directly from the api rather than writing my own functions. 
+* The api key provided did not include access to changing of base value, or specify conversion endpoints, I was not sure if it was intended or not, so I decided to roll with it and make my own currency converter, however, I think the rounding function has some issues, obviously, ideally it would be better to get the base and amount directly from the api rather than writing my own functions. 
 
 * The react app is quite messy, the Home component should be cleaned up and better modularised.
 
