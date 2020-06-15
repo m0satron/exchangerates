@@ -1,4 +1,3 @@
-// const home = require("express").Router();
 const auth = require("../middleware/auth");
 const mockUser = require("../users/mockUser");
 
