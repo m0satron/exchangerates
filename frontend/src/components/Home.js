@@ -3,6 +3,7 @@ import UserContext from "../common/UserContext";
 import Axios from "axios";
 import SearchResult from "./SearchResult";
 import ErrorMessage from "./ErrorMessage";
+import CountriesList from "./CountriesList"
 
 export default function Home() {
   const { userData } = useContext(UserContext);
@@ -10,6 +11,7 @@ export default function Home() {
   const [country, setCountry] = useState();
   const [errorMsg, setErrorMsg] = useState(false);
   const [countriesList, setCountriesList] = useState([])
+  const [rates, setRates] = useState()
   const search = async (e) => {
     e.preventDefault();
     try {
@@ -23,6 +25,7 @@ export default function Home() {
   };
   const addToList = () => setCountriesList(list => [...list, country])
   const clearList = () => setCountriesList([])
+  const getExchangeRate = () => {}
 
   if (!userData.user) return <p>Please log in to continue...</p>;
   return (
@@ -46,11 +49,32 @@ export default function Home() {
             </div>
           ) : ''
         }
-                {
+        {
           errorMsg ? (
             <ErrorMessage query={searchQuery} />
           ) : ''
         }
+        </div>
+        <div>
+        {
+        countriesList.length ? (
+          <div>
+            <form onSubmit={getExchangeRate}>
+              <label
+                htmlFor="exchangerate"
+              >
+                type an amount to check exchange rates
+              </label>
+              <input
+                id="exchangerate"
+                // onChange={(e) => setAmount(e.target.value)}
+              />
+            </form>
+            <button onClick={clearList}>clear list</button>
+            <CountriesList rates={rates} countries={countriesList} />
+          </div>
+        ) : ''
+      }
         </div>
     </div>
   );
