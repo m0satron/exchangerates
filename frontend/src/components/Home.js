@@ -46,15 +46,16 @@ export default function Home() {
   if (!userData.user) return <p>Please log in to continue...</p>;
   return (
     <div>
-      <p>Welcome {userData.user.userName}</p>
-      <form onSubmit={search}>
+      <form className="search" onSubmit={search}>
         <label htmlFor="search">Search for a country:</label>
         <input type="search" onChange={(e) => setSearchQuery(e.target.value)} />
       </form>
       <div>
         {country ? (
           <div>
-            <button onClick={addToList}>add </button>
+            <button class="button" onClick={addToList}>
+              add{" "}
+            </button>
             <SearchResult
               name={country.name}
               population={country.population}
@@ -67,25 +68,27 @@ export default function Home() {
         {errorMsg ? <ErrorMessage query={searchQuery} /> : ""}
       </div>
       <div>
-        <div>
-          <form onSubmit={getExchangeRate}>
-            <label htmlFor="exchangerate">
-              type an amount to check exchange rates
-            </label>
-            <input
-              id="exchangerate"
-              onChange={(e) => setAmount(e.target.value)}
-            />
-          </form>
-          <button onClick={clearList}>clear list</button>
+        {countriesList.length ? (
           <div>
-            {countriesList.length ? (
+            <form class="search" onSubmit={getExchangeRate}>
+              <label htmlFor="exchangerate">
+                type an amount to compare exchange rates to SEK
+              </label>
+              <input
+                id="exchangerate"
+                onChange={(e) => setAmount(e.target.value)}
+              />
+            </form>
+            <button class="button" onClick={clearList}>
+              clear list
+            </button>
+            <div>
               <CountriesList rates={rates} countries={countriesList} />
-            ) : (
-              <p>Add countries to list before comparing exchange rates.</p>
-            )}
+            </div>
           </div>
-        </div>
+        ) : (
+          <p>Add countries to list before comparing exchange rates.</p>
+        )}
       </div>
     </div>
   );

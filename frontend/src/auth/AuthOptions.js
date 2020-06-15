@@ -14,18 +14,19 @@ export default function AuthOptions() {
     localStorage.setItem("auth-token", "");
   };
 
+  if (!userData.user)
+    return (
+      <button className="button" onClick={logIn}>
+        Log in
+      </button>
+    );
   return (
-    <div>
-      {userData.user ? (
-        <button className="header__item" onClick={logOut}>
-          {" "}
-          Log Out{" "}
-        </button>
-      ) : (
-        <button className="header__item" onClick={logIn}>
-          Log in
-        </button>
-      )}
+    <div className="header">
+      <p style={{ color: "black" }}>Logged in as {userData.user.userName}</p>
+      <button className="button" onClick={logOut}>
+        {" "}
+        Log Out{" "}
+      </button>
     </div>
   );
 }

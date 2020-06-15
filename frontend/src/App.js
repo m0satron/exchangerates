@@ -6,7 +6,7 @@ import Login from "./components/Login";
 import UserContext from "./common/UserContext";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
-import "./App.css";
+import "./App.scss";
 
 function App() {
   const [userData, setUserData] = useState({
