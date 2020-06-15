@@ -1,7 +1,6 @@
 const JWT = require("jsonwebtoken");
 
 const validateToken = async (req, res) => {
-  console.log("token validation OK");
   try {
     const token = req.header("x-auth-token");
     if (!token) return res.json(false);

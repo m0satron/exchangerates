@@ -5,6 +5,7 @@ export default function CountryCard({ rates, country }) {
     if (!rates) return "";
     const found = rates.find((rate) => rate.name === code);
     if (found) return found.value;
+    if (!found) return "no exchange rates found.";
   };
   return (
     <div>

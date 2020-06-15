@@ -1,2 +1,1 @@
-
-module.exports = (req, res ) => res.send("Please login");
+module.exports = (req, res) => res.send("Please login");

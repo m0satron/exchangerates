@@ -1,11 +1,9 @@
-
 const formatCountryData = (country) => {
   return {
     name: country.name,
     population: country.population,
-    currencies: country.currencies
-  }
-}
+    currencies: country.currencies,
+  };
+};
 
-
-module.exports = formatCountryData
+module.exports = formatCountryData;
