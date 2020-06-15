@@ -40,7 +40,6 @@ export default function Home() {
       `http://localhost:3001/home/rates/${amount}/${currencyCodes}`
     );
     if (listOfRates) setRates(listOfRates.data);
-    console.log(rates);
   };
 
   if (!userData.user) return <p>Please log in to continue...</p>;

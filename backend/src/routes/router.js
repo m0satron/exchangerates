@@ -1,11 +1,9 @@
-const limiter = require("../middleware/rateLimit")
-const home = require("./home");
+const router = require("express").Router();
+const limiter = require("../middleware/rateLimit");
 const validateToken = require("./validateToken");
-
+const home = require("./home");
 const countries = require("./countries");
 const rates = require("./rates");
-
-const router = require("express").Router();
 
 router.get("/", home);
 router.post("/validateToken", validateToken);
