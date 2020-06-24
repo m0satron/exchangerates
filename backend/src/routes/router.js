@@ -7,7 +7,7 @@ const rates = require("./rates");
 
 router.get("/", home);
 router.post("/validateToken", validateToken);
-router.get("/countries/:country", limiter, countries);
+router.get("/countries/:country", countries);
 router.get("/rates/:amount/:currencies", limiter, rates);
 
 module.exports = router;
