@@ -1,5 +1,7 @@
 import React from "react";
 import ErrorMessage from "./ErrorMessage";
+import AddCircleIcon from '@material-ui/icons/AddCircle';
+import styled from "styled-components"
 
 export default function SearchResult({ country, err, addToList }) {
   if (err) {
@@ -10,9 +12,9 @@ export default function SearchResult({ country, err, addToList }) {
   const { name, population, currencies } = country
   return (
     <div>
-      <button class="button" onClick={addToList}>
-        add{" "}
-      </button>
+      <AddCircleIcon
+        onClick={addToList}
+      />
       <div>
         <h2>{name}</h2>
       </div>

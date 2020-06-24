@@ -21,25 +21,25 @@ export default function Home() {
   if (!userData.user) return <p>Please log in to continue...</p>;
   return (
     <div>
-      <SearchBar searchResult={searchResult} errorMsg={setErrorMsg} />
+      <SearchBar
+        searchResult={searchResult}
+        errorMsg={setErrorMsg}
+      />
+      <SearchResult
+        country={country}
+        err={errorMsg}
+        addToList={addToList}
+      />
       <div>
-        <div>
- 
-          <SearchResult
-            country = { country}
-            err = {errorMsg}
-            addToList = {addToList}
-          />
-        </div>
-      </div>
-      <div>
-        <ExChangeRate exChangeRates={exChangeRates} countries={countriesList} />
-        <button class="button" onClick={clearList}>
-          clear list
-            </button>
-        <div>
-          <CountriesList rates={rates} countries={countriesList} />
-        </div>
+        <ExChangeRate
+          exChangeRates={exChangeRates}
+          countries={countriesList}
+        />
+        <CountriesList
+          rates={rates}
+          clearList={clearList}
+          countries={countriesList}
+        />
       </div>
     </div>
   );
