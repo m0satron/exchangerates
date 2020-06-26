@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Axios from "axios";
+import Input from "../elements/Input"
 
 
 export default function ExchangeRate({ countries, exChangeRates }) {
   const [amount, setAmount] = useState();
+
+  const getAmount = SEK => setAmount(SEK)
 
   const getExchangeRate = async (e) => {
     e.preventDefault();
@@ -24,14 +27,19 @@ export default function ExchangeRate({ countries, exChangeRates }) {
 
   return (
     <div>
-      <form class="search" onSubmit={getExchangeRate}>
-        <label htmlFor="exchangerate">
+      <form onSubmit={getExchangeRate}>
+        <Input
+          placeholderText="amount in SEK"
+          inputType="search"
+          fn={getAmount}
+        />
+        {/* <label htmlFor="exchangerate">
           type an amount to compare exchange rates to SEKK
         </label>
         <input
           id="exchangerate"
           onChange={(e) => setAmount(e.target.value)}
-        />
+        /> */}
       </form>
 
     </div>

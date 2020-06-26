@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import styled from "styled-components"
 import Axios from "axios";
 import SearchIcon from '@material-ui/icons/Search';
+import Input from "../elements/Input"
+
 
 const Form = styled.form`
 @media (min-width: 768px) {
@@ -9,32 +11,10 @@ const Form = styled.form`
 } 
 `;
 
-const Input = styled.input`
-  border: none;
-  width: 85%;
-`;
-
-const Div = styled.div`
-  display: flex;
-  justify-content: space-between;
-  border: 1px solid black;
-  border-radius: 25px;
-  padding: 6px 12px;
-  margin: 12px;
-`;
-
-const Label = styled.label`
-  position:absolute;
-  left:-10000px;
-  top:auto;
-  width:1px;
-  height:1px;
-  overflow:hidden;
-`;
-
-
 export default function SearchBar({ searchResult, errorMsg }) {
   const [searchQuery, setSearchQuery] = useState();
+
+  const getQuery = query => setSearchQuery(query)
 
   const search = async (e) => {
     e.preventDefault();
@@ -52,11 +32,12 @@ export default function SearchBar({ searchResult, errorMsg }) {
   return (
     <div>
       <Form onSubmit={search}>
-        <Label htmlFor="search">Search for a country</Label>
-        <Div>
-          <Input type="search" placeholder="Search for a country..." onChange={(e) => setSearchQuery(e.target.value)} />
-          <SearchIcon onClick={search} />
-        </Div>
+        <Input
+          fn={getQuery}
+          placeholderText="Search for a country..."
+          inputType="search"
+          Icon={SearchIcon}
+        />
       </Form>
     </div>
   )
