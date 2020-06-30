@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import UserContext from "../common/UserContext";
 import Axios from "axios";
+import Input from "../elements/Input"
+import Button from "../elements/Button"
 
 export default function Login() {
   const [userName, setUserName] = useState();
@@ -23,21 +25,21 @@ export default function Login() {
 
   return (
     <div className="loginPage">
-      <h2>Log in</h2>
       <form onSubmit={submit}>
-        <label htmlFor="username">username</label>
-        <input
-          id="username"
-          type="username"
-          onChange={(e) => setUserName(e.target.value)}
+        <Input
+          placeholderText="user"
+          inputType="username"
+          fn={setUserName}
         />
-        <label htmlFor="password">Password</label>
-        <input
-          id="password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
+        <Input
+          placeholderText="password"
+          inputType="password"
+          fn={setPassword}
         />
-        <input type="submit" value="login"></input>
+        <Button
+          fn={submit}
+          content="log in"
+        />
       </form>
     </div>
   );
