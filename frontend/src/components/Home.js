@@ -7,16 +7,23 @@ import ExChangeRate from "./ExchangeRate";
 
 export default function Home() {
   const { userData } = useContext(UserContext);
-  const [country, setCountry] = useState();
+  const [countries, setCountries] = useState();
   const [errorMsg, setErrorMsg] = useState(false);
   const [countriesList, setCountriesList] = useState([]);
   const [rates, setRates] = useState();
 
-  const searchResult = result => setCountry(result);
+  const searchResult = result => setCountries(result);
   const exChangeRates = rates => setRates(rates);
 
-  const addToList = () => setCountriesList((list) => [...list, country]);
+  const addToList = country => {
+    const foundCountry = countries.find(item => item.name === country);
+    console.log("foundcountry: ", foundCountry)
+    setCountriesList((list) => [...list, foundCountry]);
+  }
+
   const clearList = () => setCountriesList([]);
+
+  const removeFromList = (country) => setCountriesList(list => list.filter(item => item.name !== country))
 
   if (!userData.user) return <p>Please log in to continue...</p>;
   return (
@@ -26,7 +33,7 @@ export default function Home() {
         errorMsg={setErrorMsg}
       />
       <SearchResult
-        country={country}
+        countries={countries}
         err={errorMsg}
         addToList={addToList}
       />
@@ -39,6 +46,7 @@ export default function Home() {
           rates={rates}
           clearList={clearList}
           countries={countriesList}
+          remove={removeFromList}
         />
       </div>
     </div>

@@ -15,10 +15,10 @@ const Subtitle = styled.p`
 
 export default function Title( {title} ) {
   const getSubtitle = () => {
+    if(!title) return null
     const regex = /(\(.*\))/
     const subtitle = title.match(regex)
     const heading = title.replace(regex, '')
-    if(!title) return null
     if(!subtitle) return <Heading>{heading}</Heading>
     return (
       <Heading>

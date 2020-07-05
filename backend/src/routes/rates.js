@@ -27,7 +27,10 @@ const rates = async (req, res) => {
     //   };
     // });
 
-    const response = [ { name: 'SEK', value: 14 }, { name: 'KPW', value: 1357.71 } ]
+    const response = [
+      { name: 'SEK', value: 14 }, { name: 'KPW', value: 1357.71 },
+      { name: 'SEK', value: 14 }, { name: 'KRW', value: 13767.71 }
+    ]
     res.json(response);
   } catch (err) {
     res.json({ msg: err.message });

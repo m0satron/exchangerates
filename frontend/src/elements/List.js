@@ -13,6 +13,7 @@ const Ul = styled.ul`
 `;
 
 export default function List({name, list}) {
+
   return (
     <Wrapper>
       <Title title={name}></Title>

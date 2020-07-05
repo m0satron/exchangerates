@@ -12,11 +12,14 @@ const iconStyle = {
   alignSelf: "flex-start", 
 }
 
+
+
 export default function Header({title, Icon, fn=()=>{}}) {
+  const returnCountry = () => fn(title) 
   return (
     <Wrapper>
       <Title title={title} />
-      { Icon ? (<Icon style={iconStyle} onClick={fn} />)  : '' } 
+      { Icon ? (<Icon style={iconStyle} onClick={returnCountry} />)  : '' } 
     </Wrapper>
   )
 }

@@ -1,56 +1,41 @@
 import React from "react";
 import ErrorMessage from "./ErrorMessage";
 import AddCircleIcon from '@material-ui/icons/AddCircle';
-import styled from "styled-components"
-import List from "../elements/List"
-import Header from "../elements/Header"
-import {getCurrencies} from "../common/getCurrencies"
+import { ThemeProvider } from "styled-components";
+import { getCurrencies } from "../common/getCurrencies";
+import Card from "../elements/Card";
 
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  flex-direction: column;
-  padding: 12px;
-  margin: 12px;
-  border: 1px solid black;
-`;
 
-export default function SearchResult({ country, err, addToList }) {
+
+export default function SearchResult({countries, err, addToList }) {
   if (err) {
     return (<ErrorMessage query={err} />)
   }
-  if (!country) { return <div></div> }
+  if (!countries) { return <div></div> }
 
-  const { name, population, currencies } = country
-
-  const formatPopulation = () => {
-    const nth = 3;
-    let num = population.toString().split("");
-    let index = num.length - nth;
-
-    while (index >= 1) {
-      num.splice(index, 0, " ")
-      index = index - nth;
+  const headerContent = country => {
+    return {
+      title: country.name,
+      icon: AddCircleIcon,
+      fn: addToList
     }
-    return num.join("")
-
   }
-  return (
-    <Wrapper>
-      <Header
-        title={name}
-        Icon={AddCircleIcon}
-        fn={addToList}
-      />
-      <List
-        name="population"
-        list={formatPopulation()}
-      />
-      <List
-        name="currencies"
-        list={getCurrencies(currencies)}
-      />
-    </Wrapper>
+  const theme = {
+    bg: "white"
+  }
+
+ return (
+    <ThemeProvider theme={theme}>
+      {
+       countries.map(country => (
+          <Card
+            header={headerContent(country)}
+          />
+
+        ))
+      }
+      </ThemeProvider>
+
   );
 }
 

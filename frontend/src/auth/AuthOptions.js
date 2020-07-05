@@ -18,7 +18,7 @@ export default function AuthOptions() {
   if (!userData.user)
     return (
       <div>
-        <Button content="Log in" fn={logIn} />
+        <p>Please log in to continue...</p>
       </div>
     );
   return (
