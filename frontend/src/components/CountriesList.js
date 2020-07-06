@@ -16,6 +16,7 @@ export default function CountriesList({ rates = [], countries, clearList, remove
 
         <CountryCard key={country.name} country={country} rates={rates} fn={remove} />
       ))}
+      
       <Button
         content="clear list"
         fn={clearList}
