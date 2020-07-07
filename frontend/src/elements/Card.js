@@ -7,6 +7,7 @@ import { colors } from "../style/colors"
 
 const Wrapper = styled.div`
   display: flex;
+  opacity: 1;
   justify-content: space-evenly;
   flex-direction: column;
   padding: 12px;
